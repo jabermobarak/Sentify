@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            font-size: large;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: none; /* Prevent resizing */
+        }
+        input[type="submit"], input[type="button"] {
+            padding: 12px 24px;
+            margin-left: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover, input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        .result p {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .result strong {
+            font-weight: bold;
+            color: #333;
+        }
+        .positive {
+            color: green;
+            font-weight: bold;
+        }
+        .negative {
+            color: red;
+            font-weight: bold;
+        }
+        .neutral {
+            color: #ff9800; /* Orange color */
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sentify</h1>
+        <form method="post">
+            <label for="text">Enter your sentences (one per line):</label>
+            <textarea id="text" name="text" rows="8" placeholder="Enter your sentences here...">{{ text }}</textarea>
+            <input type="submit" value="Submit">
+            <input type="button" value="Clear" onclick="clearInput()">
+        </form>
+
+        <div class="result">
+            <h2>Analysis Result</h2>
+            <p><strong>Positive Sentences:</strong> <span class="positive">{{ positive_count }}</span></p>
+            <p><strong>Neutral Sentences:</strong> <span class="neutral">{{ neutral_count }}</span></p>
+            <p><strong>Negative Sentences:</strong> <span class="negative">{{ negative_count }}</span></p>
+        </div>
+
+        <div class="footer">
+            <p>Developed by Jaber Mobarak</p>
+        </div>
+    </div>
+
+    <script>
+        function clearInput() {
+            document.getElementById("text").value = "";
+            document.querySelectorAll('.result span').forEach(function(el) {
+                el.textContent = "0";
+            });
+        }
+    </script>
+</body>
+</html>
